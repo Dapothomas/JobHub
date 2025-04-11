@@ -140,7 +140,7 @@ useSeoMeta({
         <div class="flex-col w-full flex space-y-5">
           <!-- Category -->
           <div class="flex-col flex">
-            <label class="font-poppins text-sm text-gray-500 dark:text-gray-400 mb-2 font-sm">Category</label>
+            <label class="font-poppins text-sm text-gray-600 dark:text-gray-400 mb-2 font-sm">Category</label>
             <dropdown
                 v-model="selectedCategory"
                 :options="categories"
