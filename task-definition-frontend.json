@@ -1,0 +1,62 @@
+{
+    "family": "jobboard-frontend-task",
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": ["FARGATE"],
+    "cpu": "256",
+    "memory": "512",
+    "containerDefinitions": [
+        {
+            "name": "jobboard-frontend",
+            "image": "692859942336.dkr.ecr.eu-west-2.amazonaws.com/jobboard-frontend:latest",
+            "cpu": 256,
+            "memory": 410,
+            "portMappings": [
+                {
+                    "name": "frontend-http",
+                    "containerPort": 3000,
+                    "hostPort": 3000,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [
+                {
+                    "name": "NUXT_HOST",
+                    "value": "0.0.0.0"
+                },
+                {
+                    "name": "NUXT_PORT",
+                    "value": "3000"
+                },
+                {
+                    "name": "NUXT_PUBLIC_API_URL",
+                    "value": "http://127.0.0.1:8000"
+                }
+            ],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/jobboard-frontend-task",
+                    "awslogs-region": "eu-west-2",
+                    "awslogs-stream-prefix": "ecs",
+                    "awslogs-create-group": "true",
+                    "mode": "non-blocking",
+                    "max-buffer-size": "25m"
+                }
+            },
+            "healthCheck": {
+                "command": ["CMD", "node", "-e", "require('http').get('http://localhost:3000', (res) => process.exit(res.statusCode === 200 ? 0 : 1))"],
+                "interval": 30,
+                "timeout": 5,
+                "retries": 3,
+                "startPeriod": 60
+            }
+        }
+    ],
+    "executionRoleArn": "arn:aws:iam::692859942336:role/ecsTaskExecutionRole",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    }
+}

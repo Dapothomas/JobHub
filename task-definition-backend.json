@@ -1,0 +1,143 @@
+{
+    "taskDefinitionArn": "arn:aws:ecs:eu-west-2:692859942336:task-definition/jobboard-backend-task:4",
+    "containerDefinitions": [
+        {
+            "name": "jobboard-backend",
+            "image": "692859942336.dkr.ecr.eu-west-2.amazonaws.com/jobboard-backend:latest",
+            "cpu": 256,
+            "memory": 410,
+            "memoryReservation": 307,
+            "portMappings": [
+                {
+                    "name": "backend-http",
+                    "containerPort": 8000,
+                    "hostPort": 8000,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "healthCheck": {
+                "command": [
+                    "CMD-SHELL",
+                    "curl -f http://localhost:8000/api/v1/jobapp/health/ || exit 1"
+                ],
+                "interval": 30,
+                "timeout": 5,
+                "retries": 3,
+                "startPeriod": 60
+            },
+            "essential": true,
+            "environment": [],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "secrets": [
+                {
+                    "name": "ALLOWED_HOSTS",
+                    "valueFrom": "/jobboard/ALLOWED_HOSTS"
+                },
+                {
+                    "name": "CORS_ALLOWED_ORIGINS",
+                    "valueFrom": "/jobboard/CORS_ALLOWED_ORIGINS"
+                },
+                {
+                    "name": "DB_HOST",
+                    "valueFrom": "/jobboard/DB_HOST"
+                },
+                {
+                    "name": "DB_NAME",
+                    "valueFrom": "/jobboard/DB_NAME"
+                },
+                {
+                    "name": "DB_PASSWORD",
+                    "valueFrom": "/jobboard/DB_PASSWORD"
+                },
+                {
+                    "name": "DB_PORT",
+                    "valueFrom": "/jobboard/DB_PORT"
+                },
+                {
+                    "name": "DB_USER",
+                    "valueFrom": "/jobboard/DB_USER"
+                },
+                {
+                    "name": "DEBUG",
+                    "valueFrom": "/jobboard/DEBUG"
+                }
+            ],
+            "ulimits": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/jobboard-backend-task",
+                    "mode": "non-blocking",
+                    "awslogs-create-group": "true",
+                    "max-buffer-size": "25m",
+                    "awslogs-region": "eu-west-2",
+                    "awslogs-stream-prefix": "ecs"
+                },
+                "secretOptions": []
+            },
+            "systemControls": []
+        }
+    ],
+    "family": "jobboard-backend-task",
+    "executionRoleArn": "arn:aws:iam::692859942336:role/ecsTaskExecutionRole",
+    "networkMode": "awsvpc",
+    "revision": 4,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.28"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "ecs.capability.secrets.ssm.environment-variables"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "256",
+    "memory": "512",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "registeredAt": "2025-04-01T22:00:56.553Z",
+    "registeredBy": "arn:aws:iam::692859942336:root",
+    "enableFaultInjection": false,
+    "tags": []
+}

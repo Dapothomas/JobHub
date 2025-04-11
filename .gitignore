@@ -1,0 +1,30 @@
+env/
+
+# Nuxt.js (Frontend)
+job-board/.nuxt/
+job-board/.output/
+job-board/node_modules/
+job-board/.env
+
+# Django (Backend)
+jobboard_backend/env/
+jobboard_backend/__pycache__/
+jobboard_backend/*/__pycache__/
+jobboard_backend/*/*/__pycache__/
+jobboard_backend/*/*/*/__pycache__/
+jobboard_backend/.env
+*.pyc
+*.pyo
+*~
+*.sqlite3
+*.db
+
+# Database dumps
+jobboard_backend/jobboard_backup.dump
+jobboard_backend/jobboard_backup.sql
+
+# Docker
+*.log
+
+# OS specific
+.DS_Store
