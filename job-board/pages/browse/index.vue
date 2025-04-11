@@ -34,7 +34,7 @@ async function fetchJobs() {
     } catch (error) {
         console.error('Error fetching jobs:', error);
     }
-
+}
 function toggleCategory(id){
     const index = selectedCategories.indexOf(id)
     if(index === -1){
