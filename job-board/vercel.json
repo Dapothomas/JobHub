@@ -6,6 +6,6 @@
       { "src": "/(.*)", "dest": "/" }
     ],
     "env": {
-      "NUXT_PUBLIC_API_URL": "https://your-render-backend-url.onrender.com"
+      "NUXT_PUBLIC_API_URL": "https://jobhub-qqh8.onrender.com"
     }
   }
