@@ -94,9 +94,9 @@ DATABASES = {
         'PASSWORD': os.getenv('DB_PASSWORD', 'ERxQx32cMWOBefHJ2gCAuNBX6dcdxQYs'),
         'HOST': os.getenv('DB_HOST', 'dpg-cvssoqc9c44c73c5k29g-a.frankfurt-postgres.render.com'),
         'PORT': os.getenv('DB_PORT', '5432'),
-        'OPTIONS': {
-            'sslmode': os.getenv('SSL_MODE', 'require')
-        }
+        # 'OPTIONS': {
+        #     'sslmode': os.getenv('SSL_MODE', 'require')
+        # }
     }
 }
 
