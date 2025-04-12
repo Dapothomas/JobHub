@@ -56,7 +56,7 @@ useSeoMeta({
             >
               Explore endless opportunities and connect with top employers <br />
               worldwide. Your journey to a successful <br />
-              career begins with Job Hub today!
+              career begins with Job Hub today.
             </p>
             <template v-if="userStore.user.isAuthenticated">
               <div class="flex justify-left gap-4 items-left">
