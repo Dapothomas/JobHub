@@ -20,7 +20,12 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'change_this_in_production')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'jobhub-qqh8.onrender.com',  # Add your actual Render domain
+    '*.render.com'
+]
 
 # settings.py
 DJOSER = {
@@ -84,11 +89,14 @@ WSGI_APPLICATION = 'jobboard_backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME', 'jobboard'),
+        'NAME': os.getenv('DB_NAME', 'jobboard_viye'),
         'USER': os.getenv('DB_USER', 'dapo'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'hellothere'),
-        'HOST': os.getenv('DB_HOST', 'jobboard.cj6gu80usdlb.eu-west-2.rds.amazonaws.com'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'ERxQx32cMWOBefHJ2gCAuNBX6dcdxQYs'),
+        'HOST': os.getenv('DB_HOST', 'dpg-cvssoqc9c44c73c5k29g-a.frankfurt-postgres.render.com'),
         'PORT': os.getenv('DB_PORT', '5432'),
+        'OPTIONS': {
+            'sslmode': os.getenv('SSL_MODE', 'require')
+        }
     }
 }
 
@@ -117,7 +125,8 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

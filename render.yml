@@ -3,11 +3,25 @@ services:
     name: jobboard-backend
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: cd jobboard_backend && python manage.py migrate && python manage.py runserver 0.0.0.0:$PORT
+    startCommand: gunicorn jobboard_backend.wsgi:application --bind 0.0.0.0:$PORT
     envVars:
-      - key: DJANGO_ALLOWED_HOSTS
-        value: ".onrender.com"
+      - key: SECRET_KEY
+        generateValue: true
       - key: DEBUG
         value: "False"
-      - key: CORS_ALLOW_ALL_ORIGINS
-        value: "True"
+      - key: ALLOWED_HOSTS
+        value: "localhost,127.0.0.1,jobboard-qqh8.onrender.com,*.onrender.com"
+      - key: CORS_ALLOWED_ORIGINS
+        value: "http://localhost:3000,https://*.onrender.com"
+      - key: DB_NAME
+        value: "jobboard_viye"
+      - key: DB_USER
+        value: "dapo"
+      - key: DB_PASSWORD
+        value: "ERxQx32cMWOBefHJ2gCAuNBX6dcdxQYs"
+      - key: DB_HOST
+        value: "dpg-cvssoqc9c44c73c5k29g-a.frankfurt-postgres.render.com"
+      - key: DB_PORT
+        value: "5432"
+      - key: SSL_MODE
+        value: "require"
