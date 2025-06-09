@@ -4,7 +4,14 @@ services:
     env: python
     buildCommand: pip install -r requirements.txt
     startCommand: |
-      python manage.py migrate
+      cd jobboard_backend
+      python manage.py check
+      while ! python manage.py check --database default > /dev/null 2>&1; do
+        echo "Waiting for database..."
+        sleep 2
+      done
+      python manage.py migrate --noinput
+      cd ..
       gunicorn jobboard_backend.wsgi:application -t 60 --keep-alive 60 --bind 0.0.0.0:$PORT
     envVars:
       - key: SECRET_KEY
@@ -16,13 +23,13 @@ services:
       - key: CORS_ALLOWED_ORIGINS
         value: "http://localhost:3000,https://*.onrender.com"
       - key: DB_NAME
-        value: "jobboard_viye"
+        value: "jobboard_rxve"
       - key: DB_USER
         value: "dapo"
       - key: DB_PASSWORD
-        value: "ERxQx32cMWOBefHJ2gCAuNBX6dcdxQYs"
+        value: "IFJ9FucChLguWtsL6kyj5hFJT4FtXIzu"
       - key: DB_HOST
-        value: "dpg-cvssoqc9c44c73c5k29g-a.frankfurt-postgres.render.com"
+        value: "dpg-d13kdk0gjchc738v9nng-a.frankfurt-postgres.render.com"
       - key: DB_PORT
         value: "5432"
       - key: SSL_MODE
