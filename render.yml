@@ -3,7 +3,9 @@ services:
     name: jobboard-backend
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn jobboard_backend.wsgi:application -t 60 --keep alive 60 --bind 0.0.0.0:$PORT
+    startCommand: |
+      python manage.py migrate
+      gunicorn jobboard_backend.wsgi:application -t 60 --keep-alive 60 --bind 0.0.0.0:$PORT
     envVars:
       - key: SECRET_KEY
         generateValue: true
