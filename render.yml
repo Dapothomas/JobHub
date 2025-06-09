@@ -2,7 +2,7 @@ services:
   - type: web
     name: jobboard-backend
     env: python
-    buildCommand: pip install -r requirements.txt
+    # buildCommand: pip install -r requirements.txt
     startCommand: |
       cd jobboard_backend
 echo "Checking Django system..."
