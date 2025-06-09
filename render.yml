@@ -5,14 +5,19 @@ services:
     buildCommand: pip install -r requirements.txt
     startCommand: |
       cd jobboard_backend
-      python manage.py check
-      while ! python manage.py check --database default > /dev/null 2>&1; do
-        echo "Waiting for database..."
-        sleep 2
-      done
-      python manage.py migrate --noinput
-      cd ..
-      gunicorn jobboard_backend.wsgi:application -t 60 --keep-alive 60 --bind 0.0.0.0:$PORT
+echo "Checking Django system..."
+python manage.py check
+echo "Waiting for DB to be ready..."
+while ! python manage.py check --database default > /dev/null 2>&1; do
+  echo "Waiting for database..."
+  sleep 2
+done
+echo "Running migrations..."
+python manage.py migrate --noinput
+echo "Starting Gunicorn..."
+cd ..
+gunicorn jobboard_backend.wsgi:application -t 60 --keep-alive 60 --bind 0.0.0.0:$PORT
+
     envVars:
       - key: SECRET_KEY
         generateValue: true
