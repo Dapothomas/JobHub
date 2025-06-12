@@ -161,7 +161,7 @@
               <li><NuxtLink to="/browse" class="text-gray-400 hover:text-white transition-colors duration-200">Search Jobs</NuxtLink></li>
               <li><NuxtLink to="/login" class="text-gray-400 hover:text-white transition-colors duration-200">Sign In</NuxtLink></li>
               <li><NuxtLink to="/signup" class="text-gray-400 hover:text-white transition-colors duration-200">Create Account</NuxtLink></li>
-              <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Career Tips</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Career Tips (Coming Soon)</a></li>
             </ul>
           </div>
 
@@ -171,8 +171,7 @@
             <ul class="space-y-3">
               <li><NuxtLink to="/createjob" class="text-gray-400 hover:text-white transition-colors duration-200">Post a Job</NuxtLink></li>
               <li><NuxtLink to="/myjobs" class="text-gray-400 hover:text-white transition-colors duration-200">Manage Jobs</NuxtLink></li>
-              <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Pricing</a></li>
-              <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Hiring Solutions</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Hiring Solutions (Coming Soon)</a></li>
             </ul>
           </div>
         </div>
@@ -207,7 +206,7 @@
             <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors duration-200">Cookie Policy</a>
           </div>
           <p class="text-gray-400 text-sm text-center md:text-right">
-            © 2024 JobHub. All rights reserved. Made with ❤️ for job seekers everywhere.
+            © 2025 JobHub. All rights reserved. Designed by <span class="text-white">Dapo-Thomas</span> 
           </p>
         </div>
       </div>
