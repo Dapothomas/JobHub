@@ -81,7 +81,6 @@ useSeoMeta({
 
 </script>
 
-
 <template>
     <div v-if="isLoading" class="fixed inset-0 dark:bg-gray-900 bg-white flex items-center justify-center z-50">
         <div>
@@ -91,80 +90,150 @@ useSeoMeta({
         </div>
     </div>
     
-    <div v-else class="dark:bg-gray-900">
-        <div class="relative py-16  mt-16 bg-blue-950">
-        <div class="absolute inset-0 
-            bg-JobSearch
-            bg-cover bg-center opacity-70 z-0">
-        </div>
-        <div class="relative z-10 text-white flex 
-            items-center justify-center h-full">
-            <div>
-                    <div class="relative w-full justify-center flex">
-                        <input 
-                            v-model="query"
-                            type="search" 
-                            id="fname" 
-                            class="w-full px-32 md:px-12 py-3 mt-2 text-black shadow-custom3 bg-gray-0 rounded-3xl focus:outline-none focus:ring focus:ring-indigo-300 pl-12"
-                            placeholder="Find a Job..."
-                            required
-                        />
-                        <button
-                        v-on:click="performSearch"
-                        class="absolute right-0 px-10 py-6 mt-2 hover:text-white transition duration-500 rounded-r-3xl  hover:bg-slate-950">
-                            <svg 
-                            xmlns="http://www.w3.org/2000/svg" 
-                            fill="none" 
-                            viewBox="0 0 24 24" 
-                            stroke-width="1.5" 
-                            stroke="currentColor" 
-                            class="absolute flex justify-center w-full items-center right-1 top-1/2 transform -translate-y-1/2 size-7 hover:text-white text-gray-500">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                        </svg>
-                        </button>
-                    </div>
-                    <div class="hidden md:flex mt-5">
-                        <h3 class="text-white font-poppins mr-6">Popular Searches: </h3>
-                        <div class="flex flex-cols-3 divide-x">
-                            <a @click.prevent="handlePopularSearch('Cybersecurity Specialist')" 
-                               class="hover:underline px-2 text-white font-poppins cursor-pointer">
-                               Cybersecurity Specialist
-                            </a>
-                            <a @click.prevent="handlePopularSearch('Marketing Manager')" 
-                               class="hover:underline px-2 text-white font-poppins cursor-pointer">
-                               Marketing Manager
-                            </a>
-                            <a @click.prevent="handlePopularSearch('Software Engineer')" 
-                               class="hover:underline px-2 text-white font-poppins cursor-pointer">
-                               Software Engineer
-                            </a>
+    <div v-else class="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+        <!-- Search Header -->
+        <div class="relative py-20 sm:py-24 lg:py-28 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-800 dark:to-purple-800">
+            <div class="absolute inset-0 bg-JobSearch bg-cover bg-center opacity-20"></div>
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+                        Find Your
+                        <span class="text-yellow-300">Dream Job</span>
+                    </h1>
+                    <p class="text-xl text-blue-100 mb-12 max-w-3xl mx-auto">
+                        Discover thousands of opportunities from top companies worldwide
+                    </p>
+
+                    <!-- Search Bar -->
+                    <div class="max-w-3xl mx-auto mb-8">
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none">
+                                <svg class="h-6 w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                            </div>
+                            <input 
+                                v-model="query"
+                                type="search" 
+                                placeholder="Search for jobs, companies, or keywords..."
+                                class="w-full pl-14 pr-32 py-6 text-lg bg-white/95 dark:bg-gray-800/95 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 border-0 rounded-2xl shadow-xl focus:outline-none focus:ring-4 focus:ring-white/30 transition-all duration-300"
+                                @keyup.enter="performSearch"
+                            />
+                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                                <button
+                                    @click="performSearch"
+                                    class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg"
+                                >
+                                    Search
+                                </button>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Popular Searches -->
+                    <div class="hidden sm:flex items-center justify-center space-x-4 text-blue-100">
+                        <span class="font-medium">Popular:</span>
+                        <div class="flex flex-wrap gap-2">
+                            <button @click="handlePopularSearch('Cybersecurity Specialist')" 
+                                   class="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-full text-sm font-medium transition-colors duration-200">
+                                Cybersecurity
+                            </button>
+                            <button @click="handlePopularSearch('Marketing Manager')" 
+                                   class="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-full text-sm font-medium transition-colors duration-200">
+                                Marketing
+                            </button>
+                            <button @click="handlePopularSearch('Software Engineer')" 
+                                   class="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-full text-sm font-medium transition-colors duration-200">
+                                Software Engineer
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class=" mx-5 md:mx-16 py-12 md:flex">
-        <div class="mt-3 w-1/5 hidden md:block">
-            <h3 class="text-gray-500 dark:text-gray-50 text-sm font-poppins font-light pt-5">
-                Categories
-            </h3>
-            <div class="mt-6 space-y-4">
-                <p 
-                v-for="category in jobCategories"
-                :key="category.id" 
-                v-on:click="toggleCategory(category.id)"
-                class="text-gray-800 dark:text-gray-100 font-poppins text-sm cursor-pointer font-light px-3 rounded-md py-4"
-                v-bind:class="{'dark:text-gray-100 text-gray-900 underline underline-offset-4 ': selectedCategoriesRef.includes(category.id)}">
-                {{ category.title }} 
-                </p>
+
+        <!-- Main Content -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="lg:flex lg:gap-8">
+                
+                <!-- Sidebar - Categories (Desktop) -->
+                <div class="hidden lg:block lg:w-1/4 lg:flex-shrink-0">
+                    <div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-gray-200/50 dark:border-gray-700/50 sticky top-24">
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                            </svg>
+                            Filter by Category
+                        </h3>
+                        <div class="space-y-2">
+                            <button 
+                                v-for="category in jobCategories"
+                                :key="category.id" 
+                                @click="toggleCategory(category.id)"
+                                class="w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 hover:bg-blue-50 dark:hover:bg-gray-700"
+                                :class="selectedCategoriesRef.includes(category.id) 
+                                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg' 
+                                    : 'text-gray-700 dark:text-gray-300'"
+                            >
+                                {{ category.title }} 
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Categories Filter -->
+                <div class="lg:hidden mb-6">
+                    <div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-gray-200/50 dark:border-gray-700/50">
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Categories</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <button 
+                                v-for="category in jobCategories"
+                                :key="category.id" 
+                                @click="toggleCategory(category.id)"
+                                class="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200"
+                                :class="selectedCategoriesRef.includes(category.id) 
+                                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg' 
+                                    : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'"
+                            >
+                                {{ category.title }} 
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jobs List -->
+                <div class="lg:flex-1">
+                    <!-- Results Header -->
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+                            {{ jobs.length }} Job{{ jobs.length !== 1 ? 's' : '' }} Found
+                        </h2>
+                        <div class="hidden sm:flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+                            </svg>
+                            <span>Sort by: Newest</span>
+                        </div>
+                    </div>
+
+                    <!-- Jobs Grid -->
+                    <div v-if="jobs.length === 0" class="text-center py-20">
+                        <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-gray-800 dark:to-gray-700 rounded-2xl flex items-center justify-center">
+                            <svg class="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0H8m8 0v2a2 2 0 01-2 2H10a2 2 0 01-2-2V6"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">No jobs found</h3>
+                        <p class="text-gray-500 dark:text-gray-400 text-lg">Try adjusting your search criteria or browse all categories</p>
+                    </div>
+                    
+                    <div v-else class="space-y-6">
+                        <job v-for="job in jobs"
+                             :key="job.id"
+                             :job="job"/>
+                    </div>
+                </div>
             </div>
-        </div> 
-        <div class="w-full divide-y">
-            <job 
-            v-for="job in jobs"
-            :key="job.id"
-            :job="job"/>
-        </div> 
-    </div>
+        </div>
     </div>
 </template>
