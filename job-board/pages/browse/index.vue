@@ -107,43 +107,46 @@ useSeoMeta({
                     <!-- Search Bar -->
                     <div class="max-w-3xl mx-auto mb-8">
                         <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none">
-                                <svg class="h-6 w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="absolute inset-y-0 left-0 pl-4 sm:pl-6 flex items-center pointer-events-none">
+                                <svg class="h-5 w-5 sm:h-6 sm:w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                                 </svg>
                             </div>
                             <input 
                                 v-model="query"
                                 type="search" 
-                                placeholder="Search for jobs, companies, or keywords..."
-                                class="w-full pl-14 pr-32 py-6 text-lg bg-white/95 dark:bg-gray-800/95 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 border-0 rounded-2xl shadow-xl focus:outline-none focus:ring-4 focus:ring-white/30 transition-all duration-300"
+                                placeholder="Search jobs, companies..."
+                                class="w-full pl-12 sm:pl-14 pr-20 sm:pr-32 py-4 sm:py-6 text-base sm:text-lg bg-white/95 dark:bg-gray-800/95 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 border-0 rounded-2xl shadow-xl focus:outline-none focus:ring-4 focus:ring-white/30 transition-all duration-300"
                                 @keyup.enter="performSearch"
                             />
-                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                            <div class="absolute inset-y-0 right-0 pr-2 sm:pr-3 flex items-center">
                                 <button
                                     @click="performSearch"
-                                    class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg"
+                                    class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 sm:px-8 py-3 sm:py-4 rounded-xl text-sm sm:text-base font-semibold hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg"
                                 >
-                                    Search
+                                    <span class="hidden sm:inline">Search</span>
+                                    <svg class="w-4 h-4 sm:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                    </svg>
                                 </button>
                             </div>
                         </div>
                     </div>
 
                     <!-- Popular Searches -->
-                    <div class="hidden sm:flex items-center justify-center space-x-4 text-blue-100">
-                        <span class="font-medium">Popular:</span>
-                        <div class="flex flex-wrap gap-2">
+                    <div class="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4 text-blue-100">
+                        <span class="font-medium text-sm sm:text-base">Popular:</span>
+                        <div class="flex flex-wrap gap-2 justify-center">
                             <button @click="handlePopularSearch('Cybersecurity Specialist')" 
-                                   class="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-full text-sm font-medium transition-colors duration-200">
+                                   class="px-3 py-1.5 sm:px-4 sm:py-2 bg-white/20 hover:bg-white/30 rounded-full text-xs sm:text-sm font-medium transition-colors duration-200">
                                 Cybersecurity
                             </button>
                             <button @click="handlePopularSearch('Marketing Manager')" 
-                                   class="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-full text-sm font-medium transition-colors duration-200">
+                                   class="px-3 py-1.5 sm:px-4 sm:py-2 bg-white/20 hover:bg-white/30 rounded-full text-xs sm:text-sm font-medium transition-colors duration-200">
                                 Marketing
                             </button>
                             <button @click="handlePopularSearch('Software Engineer')" 
-                                   class="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-full text-sm font-medium transition-colors duration-200">
+                                   class="px-3 py-1.5 sm:px-4 sm:py-2 bg-white/20 hover:bg-white/30 rounded-full text-xs sm:text-sm font-medium transition-colors duration-200">
                                 Software Engineer
                             </button>
                         </div>
